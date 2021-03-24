@@ -6,13 +6,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
+import { LandingLayoutComponent } from './layout/landing-layout/landing-layout.component';
+import { KwetterLayoutComponent } from './layout/kwetter-layout/kwetter-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     RegisterComponent,
-    LandingComponent
+    LandingComponent,
+    LandingLayoutComponent,
+    KwetterLayoutComponent
   ],
   imports: [
     BrowserModule,
