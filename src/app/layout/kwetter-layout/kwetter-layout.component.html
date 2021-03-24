@@ -1,19 +1,82 @@
 <!doctype html>
 <html lang="en">
-    <head>  
-        <meta charset="utf-8">  
-        <title>Kwetter</title>
-        <base href="/">  
-        <meta name="viewport" content="width=device-width, initial-scale=1">  
-        <link rel="icon" type="image/x-icon" href="favicon.ico">  
-    </head>
+
+<head>
+  <meta charset="utf-8">
+  <title>Kwetter</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <router-outlet></router-outlet>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow list-group-item">
+          <div class="collapse navbar-collapse ml-0">
+
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="">Overview</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Notifcations</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">My Kwetter</a>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="/logout"><b class="mr-2">Sign out</b></a></li>
+            </ul>
+
+            <div class="form-inline my-2">
+              <input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Search kwetter">
+              <button class="btn btn-dark btn-sm " type="submit"><i class="fa fa-search"></i> Search</button>
+            </div>
+
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-3">
+        <div class="card">
+          <div class="card-header bg-dark text-white">Header</div>
+          <div class="card-body">
+              
+          </div>
+        </div>
+      </div>
+
+      <div class="col-9">
+        <div class="card">
+          <div class="card-header bg-dark text-white">Header</div>
+          <div class="card-body">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    asdas
+                </div>
+                <div class="card-footer bg-dark text-white">
+                    <small>Twitter inc.</small>
+                </div>
             </div>
         </div>
-    </div> 
+    </div>
+
+  </div>
 </body>
+
 </html>

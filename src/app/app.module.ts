@@ -9,6 +9,8 @@ import { LandingComponent } from './landing/landing.component';
 import { LandingLayoutComponent } from './layout/landing-layout/landing-layout.component';
 import { KwetterLayoutComponent } from './layout/kwetter-layout/kwetter-layout.component';
 import { AuthenticationLayoutComponent } from './layout/authentication-layout/authentication-layout.component';
+import { OverviewComponent } from './main/overview/overview.component';
+import { ProfilePageComponent } from './main/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AuthenticationLayoutComponent } from './layout/authentication-layout/au
     LandingComponent,
     LandingLayoutComponent,
     KwetterLayoutComponent,
-    AuthenticationLayoutComponent
+    AuthenticationLayoutComponent,
+    OverviewComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
