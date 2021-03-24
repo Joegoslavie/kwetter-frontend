@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { LandingLayoutComponent } from './layout/landing-layout/landing-layout.component';
 import { KwetterLayoutComponent } from './layout/kwetter-layout/kwetter-layout.component';
+import { AuthenticationLayoutComponent } from './layout/authentication-layout/authentication-layout.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { KwetterLayoutComponent } from './layout/kwetter-layout/kwetter-layout.c
     RegisterComponent,
     LandingComponent,
     LandingLayoutComponent,
-    KwetterLayoutComponent
+    KwetterLayoutComponent,
+    AuthenticationLayoutComponent
   ],
   imports: [
     BrowserModule,
