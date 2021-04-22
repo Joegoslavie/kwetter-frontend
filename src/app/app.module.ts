@@ -11,6 +11,7 @@ import { KwetterLayoutComponent } from './layout/kwetter-layout/kwetter-layout.c
 import { AuthenticationLayoutComponent } from './layout/authentication-layout/authentication-layout.component';
 import { OverviewComponent } from './main/overview/overview.component';
 import { ProfilePageComponent } from './main/profile-page/profile-page.component';
+import { MenuComponent } from './layout/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProfilePageComponent } from './main/profile-page/profile-page.component
     KwetterLayoutComponent,
     AuthenticationLayoutComponent,
     OverviewComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

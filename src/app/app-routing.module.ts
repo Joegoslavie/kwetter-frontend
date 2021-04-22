@@ -8,6 +8,7 @@ import { LandingLayoutComponent } from './layout/landing-layout/landing-layout.c
 import { KwetterLayoutComponent } from './layout/kwetter-layout/kwetter-layout.component';
 import { AuthenticationLayoutComponent } from './layout/authentication-layout/authentication-layout.component';
 import { OverviewComponent } from './main/overview/overview.component';
+import { ProfilePageComponent } from './main/profile-page/profile-page.component';
 // add components
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'signin', component: AuthenticationLayoutComponent, children: [{ path: '', component: SignInComponent }]},
   { path: 'register', component: AuthenticationLayoutComponent, children: [{ path: '', component: RegisterComponent }]},
 
-  { path: 'main', component: KwetterLayoutComponent, children: [{ path: '', component: OverviewComponent }]},
+  { path: 'timeline', component: KwetterLayoutComponent, children: [{ path: '', component: OverviewComponent }]},
+  { path: 'profile', component: KwetterLayoutComponent, children: [{ path: '', component: ProfilePageComponent }]},
 ];
 
 @NgModule({

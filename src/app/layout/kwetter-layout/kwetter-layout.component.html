@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container mt-3">
 
     <div class="row">
       <div class="col-12">
@@ -43,37 +43,33 @@
       </div>
     </div>
 
-    <div class="row mt-2">
-      <div class="col-3">
-        <div class="card">
-          <div class="card-header bg-dark text-white">Header</div>
-          <div class="card-body">
-              
-          </div>
-        </div>
-      </div>
-
-      <div class="col-9">
-        <div class="card">
-          <div class="card-header bg-dark text-white">Header</div>
-          <div class="card-body">
-            <router-outlet></router-outlet>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="row mt-2">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    asdas
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-3">
+                <app-menu></app-menu>
+              </div>
+
+              <div class="col-9">
+                <div class="card">
+                  <div class="card-header">Timeline</div>
+                  <div class="card-body">
+                    <router-outlet></router-outlet>
+                  </div>
                 </div>
-                <div class="card-footer bg-dark text-white">
-                    <small>Twitter inc.</small>
-                </div>
+              </div>
+
             </div>
+          </div>
+          <div class="card-footer bg-blue text-dark">
+            <small>Kwetter Inc.</small>
+          </div>
         </div>
+      </div>
     </div>
 
   </div>
