@@ -10,6 +10,7 @@ import { AuthenticationLayoutComponent } from './layout/authentication-layout/au
 import { OverviewComponent } from './main/overview/overview.component';
 import { ProfilePageComponent } from './main/profile-page/profile-page.component';
 import { TimelinePageComponent } from './main/timeline-page/timeline-page.component';
+import { SettingsPageComponent } from './main/settings-page/settings-page.component';
 // add components
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
 
   { path: 'timeline', component: KwetterLayoutComponent, children: [{ path: '', component: TimelinePageComponent }]},
   { path: 'profile/:username', component: KwetterLayoutComponent, children: [{ path: '', component: ProfilePageComponent }]},
+  { path: 'settings', component: KwetterLayoutComponent, children: [{ path: '', component: SettingsPageComponent }]},
 ];
 
 @NgModule({
