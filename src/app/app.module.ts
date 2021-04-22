@@ -17,6 +17,7 @@ import { FollowingPageComponent } from './main/following-page/following-page.com
 import { FollowersPageComponent } from './main/followers-page/followers-page.component';
 import { TimelinePageComponent } from './main/timeline-page/timeline-page.component';
 import { PlaceTweetFormComponent } from './main/place-tweet-form/place-tweet-form.component';
+import { MentionPageComponent } from './main/mention-page/mention-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PlaceTweetFormComponent } from './main/place-tweet-form/place-tweet-for
     FollowingPageComponent,
     FollowersPageComponent,
     TimelinePageComponent,
-    PlaceTweetFormComponent
+    PlaceTweetFormComponent,
+    MentionPageComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { OverviewComponent } from './main/overview/overview.component';
 import { ProfilePageComponent } from './main/profile-page/profile-page.component';
 import { TimelinePageComponent } from './main/timeline-page/timeline-page.component';
 import { SettingsPageComponent } from './main/settings-page/settings-page.component';
+import { MentionPageComponent } from './main/mention-page/mention-page.component';
 // add components
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
 
   { path: 'timeline', component: KwetterLayoutComponent, children: [{ path: '', component: TimelinePageComponent }]},
   { path: 'profile/:username', component: KwetterLayoutComponent, children: [{ path: '', component: ProfilePageComponent }]},
+  { path: 'mentions', component: KwetterLayoutComponent, children: [{ path: '', component: MentionPageComponent }]},
   { path: 'settings', component: KwetterLayoutComponent, children: [{ path: '', component: SettingsPageComponent }]},
 ];
 
