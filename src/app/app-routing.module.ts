@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'register', component: AuthenticationLayoutComponent, children: [{ path: '', component: RegisterComponent }]},
 
   { path: 'timeline', component: KwetterLayoutComponent, children: [{ path: '', component: TimelinePageComponent }]},
-  { path: 'profile', component: KwetterLayoutComponent, children: [{ path: '', component: ProfilePageComponent }]},
+  { path: 'profile/:username', component: KwetterLayoutComponent, children: [{ path: '', component: ProfilePageComponent }]},
 ];
 
 @NgModule({

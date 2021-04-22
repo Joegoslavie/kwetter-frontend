@@ -1,1 +1,137 @@
-<p>profile-page works!</p>
+<div class="row">
+    <div class="col-3">
+        <div class="row">
+            <div class="col-12">
+                <img width="250" height="250" class="rounded shadow shadow-lg border border-secondary" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
+            </div>
+            <div class="col-12 mt-1">
+                <h4 class="mb-0">Hugo V.</h4>
+                <a href="">@Joegoslavie</a>
+                <hr>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate tempore laborum itaque iure, vel, quidem autem beatae quo eaque reprehenderit rem hic.</p>             
+                <hr>
+                <i class="fa fa-link text-gray"></i><a href=""> https://github.com/Joegoslavie</a><br>
+                <i class="fa fa-history text-gray"></i> Joined Feb 2021.
+            </div>
+        </div>
+    </div>
+    <div class="col-9">
+        
+        <div class="row mb-2">
+            <div class="col-12">
+                <div class="float-left">
+                    <p>Currently viewing profile of <a href="">Joegoslavie</a></p>
+                </div>
+                <div class="float-right">
+                    <button class="mr-1 btn btn-secondary btn-sm">Follow</button>
+                    <button class="btn btn-secondary btn-sm">Block user</button>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link {{ isActive('tweets') }}" [routerLink]="['./']">Tweets (10)</a>
+            </li>
+            <li class="nav-item">
+              <a class="text-dark nav-link {{ isActive('following') }}" href="{{ followingUrl }}">Following (144)</a>
+            </li>
+            <li class="nav-item">
+              <a class="text-dark nav-link {{ isActive('followers') }}" href="{{ followersUrl }}">Followers (94)</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#">Pinned</a>
+            </li> -->
+          </ul>
+
+          <div class="row">
+              <div class="col-12">
+                  <div class="card border-top-0">
+                      <div class="card-body">
+
+                        <div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
+                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
+                                    <div class="float-left">
+                                        <small><i>10/10/2020 12:30</i></small>
+                                      </div>
+                                      <div class="float-right">
+                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
+                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
+                    
+                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
+                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
+                                      </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
+                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
+                                    <div class="float-left">
+                                        <small><i>10/10/2020 12:30</i></small>
+                                      </div>
+                                      <div class="float-right">
+                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
+                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
+                    
+                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
+                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
+                                      </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
+                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
+                                    <div class="float-left">
+                                        <small><i>10/10/2020 12:30</i></small>
+                                      </div>
+                                      <div class="float-right">
+                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
+                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
+                    
+                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
+                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
+                                      </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
+                                    <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia est eum quod expedita tenetur perferendis vel ullam velit rem quasi. Impedit illum, officia reprehenderit voluptas tenetur quo! Iusto, ullam maxime!</p>  
+                                    <div class="float-left">
+                                        <small><i>10/10/2020 12:30</i></small>
+                                      </div>
+                                      <div class="float-right">
+                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
+                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
+                    
+                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
+                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
+                                      </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>
