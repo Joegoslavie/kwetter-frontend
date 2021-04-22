@@ -12,6 +12,11 @@ import { AuthenticationLayoutComponent } from './layout/authentication-layout/au
 import { OverviewComponent } from './main/overview/overview.component';
 import { ProfilePageComponent } from './main/profile-page/profile-page.component';
 import { MenuComponent } from './layout/menu/menu.component';
+import { SettingsPageComponent } from './main/settings-page/settings-page.component';
+import { FollowingPageComponent } from './main/following-page/following-page.component';
+import { FollowersPageComponent } from './main/followers-page/followers-page.component';
+import { TimelinePageComponent } from './main/timeline-page/timeline-page.component';
+import { PlaceTweetFormComponent } from './main/place-tweet-form/place-tweet-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { MenuComponent } from './layout/menu/menu.component';
     AuthenticationLayoutComponent,
     OverviewComponent,
     ProfilePageComponent,
-    MenuComponent
+    MenuComponent,
+    SettingsPageComponent,
+    FollowingPageComponent,
+    FollowersPageComponent,
+    TimelinePageComponent,
+    PlaceTweetFormComponent
   ],
   imports: [
     BrowserModule,
