@@ -10,41 +10,47 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 </head>
 
-<body>
+<body class="mb-5">
+  <div class="container mt-3">
 
-  <hr class="mt-5">
-
-  <div class="container">
-
-    <div class="row mt-3">
-      <div class="col-7">
-        <p class="header-kw mt-0">Kwetter.IO</p>
-      </div>
-      <div class="col-5 font links">
-        <a routerLink="/register" class="float-right">Register.</a>
-        <a routerLink="/signin" class="float-right">Sign in.</a>
-        <a routerLink="/" class="float-right">Back.</a>
+    <div class="row">
+      <div class="col-12">
+        <h1>
+          <span class="text-primary">K</span> W E T T E R<span class="text-primary">.</span>
+        </h1>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow list-group-item">
+          <div class="collapse navbar-collapse ml-0">
+
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/signin"><i class="fa fa-link text-gray"> </i> Sign in</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/register"><i class="fa fa-user text-gray"></i> Create account</a>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-12">
         <div class="card">
-          <div class="card-header bg-dark text-white font font-upper">
-            <small>Authentication.</small>
-          </div>
           <div class="card-body">
-            <div class="row">
-              <router-outlet></router-outlet>
-            </div>
-          </div>
-          <div class="card-footer bg-dark text-white font font-upper">
-            <small>Kwetter</small>
-            <small class="float-right">All rights reserved.</small>
+            <router-outlet></router-outlet>
           </div>
         </div>
       </div>
     </div>
+
+
 
   </div>
 
