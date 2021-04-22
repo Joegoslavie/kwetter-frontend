@@ -9,6 +9,7 @@ import { KwetterLayoutComponent } from './layout/kwetter-layout/kwetter-layout.c
 import { AuthenticationLayoutComponent } from './layout/authentication-layout/authentication-layout.component';
 import { OverviewComponent } from './main/overview/overview.component';
 import { ProfilePageComponent } from './main/profile-page/profile-page.component';
+import { TimelinePageComponent } from './main/timeline-page/timeline-page.component';
 // add components
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'signin', component: AuthenticationLayoutComponent, children: [{ path: '', component: SignInComponent }]},
   { path: 'register', component: AuthenticationLayoutComponent, children: [{ path: '', component: RegisterComponent }]},
 
-  { path: 'timeline', component: KwetterLayoutComponent, children: [{ path: '', component: OverviewComponent }]},
+  { path: 'timeline', component: KwetterLayoutComponent, children: [{ path: '', component: TimelinePageComponent }]},
   { path: 'profile', component: KwetterLayoutComponent, children: [{ path: '', component: ProfilePageComponent }]},
 ];
 

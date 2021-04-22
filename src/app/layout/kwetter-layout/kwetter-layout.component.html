@@ -7,6 +7,7 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -19,13 +20,16 @@
 
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="">Overview</a>
+                <a class="nav-link" routerLink="/timeline">My Timeline</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Notifcations</a>
+                <a class="nav-link" routerLink="/profile">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">My Kwetter</a>
+                <a class="nav-link" routerLink="/notifications">Notifications</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/settings">Settings</a>
               </li>
             </ul>
 
@@ -35,7 +39,7 @@
 
             <div class="form-inline my-2">
               <input class="form-control mr-sm-2 form-control-sm" type="search" placeholder="Search kwetter">
-              <button class="btn btn-dark btn-sm " type="submit"><i class="fa fa-search"></i> Search</button>
+              <button class="btn btn-primary btn-sm " type="submit"><i class="fa fa-search"></i> Search</button>
             </div>
 
           </div>
@@ -48,22 +52,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-
-            <div class="row">
-              <div class="col-3">
-                <app-menu></app-menu>
-              </div>
-
-              <div class="col-9">
-                <div class="card">
-                  <div class="card-header">Timeline</div>
-                  <div class="card-body">
-                    <router-outlet></router-outlet>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+              <router-outlet></router-outlet>
           </div>
           <div class="card-footer bg-blue text-dark">
             <small>Kwetter Inc.</small>
