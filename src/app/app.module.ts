@@ -18,6 +18,8 @@ import { FollowersPageComponent } from './main/followers-page/followers-page.com
 import { TimelinePageComponent } from './main/timeline-page/timeline-page.component';
 import { PlaceTweetFormComponent } from './main/place-tweet-form/place-tweet-form.component';
 import { MentionPageComponent } from './main/mention-page/mention-page.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,11 +38,13 @@ import { MentionPageComponent } from './main/mention-page/mention-page.component
     FollowersPageComponent,
     TimelinePageComponent,
     PlaceTweetFormComponent,
-    MentionPageComponent
+    MentionPageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
