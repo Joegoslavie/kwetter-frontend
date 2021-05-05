@@ -20,8 +20,9 @@ export class SignInComponent implements OnInit {
   }
 
   public login(){
-    let resp = this.service.doLogin(this.username, this.password);
-    console.log(resp);
+    this.service.doLogin(this.username, this.password).subscribe(result => {
+      console.log(result);
+    });
   }
 
 }
