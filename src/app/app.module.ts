@@ -19,7 +19,8 @@ import { TimelinePageComponent } from './main/timeline-page/timeline-page.compon
 import { PlaceTweetFormComponent } from './main/place-tweet-form/place-tweet-form.component';
 import { MentionPageComponent } from './main/mention-page/mention-page.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInjector } from './classes/request-injector';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInjector,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

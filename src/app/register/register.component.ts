@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
   public password : string;
   public passwordRepeat : string;
 
+  public errorMsg : string;
+  
   constructor(private service : AuthService) { 
 
   }
@@ -21,9 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public register(){
-    this.service.doRegister(this.username, this.email, this.password, this.passwordRepeat).subscribe(result => {
-      console.log(result.body);
-    });
+    let result = this.service.doRegister(this.username, this.email, this.password, this.passwordRepeat);
   }
 
 }

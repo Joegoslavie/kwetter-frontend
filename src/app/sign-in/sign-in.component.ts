@@ -11,6 +11,9 @@ export class SignInComponent implements OnInit {
   public username : string;
   public password : string;
 
+  public errorMsg : string;
+  public loginAttempted = false;
+
   constructor(private service : AuthService) {
 
    }
@@ -20,8 +23,16 @@ export class SignInComponent implements OnInit {
   }
 
   public login(){
+    this.loginAttempted = true;
+    this.errorMsg = '';
     this.service.doLogin(this.username, this.password).subscribe(result => {
-      console.log(result);
+
+      console.log(result.body);
+
+    }, failure => {
+      this.errorMsg = failure.error.message;
+      this.loginAttempted = false;
+      this.password = '';
     });
   }
 

@@ -15,13 +15,14 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input [(ngModel)]="username" id="username" name="username" type="text" value="" class="form-control form-control-sm">
+                    <small class="text-danger">{{ errorMsg }}</small>
                 </div>
                 <div class="form-group">
                     <label for="username">Password</label>
                     <input [(ngModel)]="password" name="password" type="password" value="" class="form-control form-control-sm">
                 </div>
                 <div class="form-group">
-                    <button (click)="login()" [disabled]="!username || !password" class="btn btn-success btn-sm float-right">Sign in</button>
+                    <button (click)="login()" [disabled]="loginAttempted || !username || !password" class="btn btn-success btn-sm float-right">Sign in</button>
                     <small class="">No account yet? click <a routerLink="/register">here.</a></small>
                 </div>
             </div>
