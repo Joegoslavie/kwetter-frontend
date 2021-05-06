@@ -21,6 +21,8 @@ import { MentionPageComponent } from './main/mention-page/mention-page.component
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInjector } from './classes/request-injector';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtGuardService } from './services/jwt-guard.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { RequestInjector } from './classes/request-injector';
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInjector,
       multi: true
-    }
+    },
+    JwtHelperService,
+    JwtGuardService,
   ],
   bootstrap: [AppComponent]
 })

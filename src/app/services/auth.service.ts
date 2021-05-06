@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { AuthenticationResult } from '../classes/response/authentication-result';
-import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -14,13 +12,16 @@ export class AuthService {
   private loginUri = environment.endpoint + "/authentication/login";
 
   private currentUser : any;
+  private jwtHelper = new JwtHelperService();
 
-  constructor(private httpClient : HttpClient, private jwtHelper : JwtHelperService) { 
+  constructor(private httpClient : HttpClient) { 
 
   }
 
   public isAuthenticated(): boolean {
     const token = this.getToken();
+    return false;
+    
     return !this.jwtHelper.isTokenExpired(token);
   }
 
