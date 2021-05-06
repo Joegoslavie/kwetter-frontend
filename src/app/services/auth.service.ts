@@ -3,6 +3,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthenticationResult } from '../classes/response/authentication-result';
 import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,13 @@ export class AuthService {
 
   private currentUser : any;
 
-  constructor(private httpClient : HttpClient) { 
+  constructor(private httpClient : HttpClient, private jwtHelper : JwtHelperService) { 
 
   }
 
   public isAuthenticated(): boolean {
-    // get the token
-    return this.getToken() != '';
+    const token = this.getToken();
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   public getToken() {
