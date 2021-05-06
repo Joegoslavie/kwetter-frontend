@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { KwetterUser } from '../classes/models/kwetter-user';
+import { AuthenticationResult } from '../classes/response/authentication-result';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,7 +17,7 @@ export class SignInComponent implements OnInit {
   public errorMsg : string;
   public loginAttempted = false;
 
-  constructor(private service : AuthService) {
+  constructor(private service : AuthService, private router : Router) {
 
    }
 
@@ -27,10 +30,16 @@ export class SignInComponent implements OnInit {
     this.errorMsg = '';
     this.service.doLogin(this.username, this.password).subscribe(result => {
 
-      console.log(result.body);
+      let resultData : AuthenticationResult = JSON.parse(JSON.stringify(result.body));
+      let account : KwetterUser = resultData.account;
+
+      this.service.setToken(account.token);
+      this.router.navigate(['timeline']);
 
     }, failure => {
-      this.errorMsg = failure.error.message;
+      let errorData : AuthenticationResult = JSON.parse(JSON.stringify(failure.error));
+      this.errorMsg = errorData.message;
+
       this.loginAttempted = false;
       this.password = '';
     });

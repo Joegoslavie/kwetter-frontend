@@ -1,7 +1,8 @@
 export class KwetterUser {
-    public username : string;
 
-    public static construct(body) : KwetterUser{
-        return null;
-    }
+    public id : number;
+    public username : string;
+    public email : string;
+    public token : string;
+    
 }

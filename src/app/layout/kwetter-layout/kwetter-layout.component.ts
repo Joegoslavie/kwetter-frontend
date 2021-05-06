@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-kwetter-layout',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KwetterLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth : AuthService, private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+  public logout(){
+    this.auth.logout();
   }
 
 }

@@ -4,5 +4,5 @@ export class AuthenticationResult {
     public succeeded : boolean;
     public message : string;
 
-    public user : KwetterUser
+    public account : KwetterUser
 }

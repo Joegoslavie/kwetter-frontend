@@ -20,8 +20,6 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.getToken();
-    return false;
-    
     return !this.jwtHelper.isTokenExpired(token);
   }
 
@@ -29,9 +27,12 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  public set(token : string){
-    console.log('token received', token);
+  public setToken(token : string){
     localStorage.setItem('token', token);
+  }
+
+  public logout(){
+    localStorage.removeItem('token');
   }
 
   public doRegister(username : string, email : string, password : string, passwordRpt : string) {
