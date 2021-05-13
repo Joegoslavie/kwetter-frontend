@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
 
   }
 
-  public login(){
+  public login() {
     this.loginAttempted = true;
     this.errorMsg = '';
     this.service.doLogin(this.username, this.password).subscribe(result => {

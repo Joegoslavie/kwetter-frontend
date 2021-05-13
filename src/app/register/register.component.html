@@ -13,10 +13,12 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input [(ngModel)]="username" id="username" name="username" type="text" value="" class="form-control form-control-sm">
+                    <small class="text-danger">{{ usernameError }}</small>
                 </div>
                 <div class="form-group">
                     <label for="username">E-mail</label>
                     <input [(ngModel)]="email" id="email" name="email" type="text" value="" class="form-control form-control-sm">
+                    <small class="text-danger">{{ emailError }}</small>
                 </div>
                 <div class="form-group">
                     <div class="row">
