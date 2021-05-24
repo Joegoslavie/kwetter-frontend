@@ -21,6 +21,7 @@ export class AuthService {
 
   public setUser(user : KwetterUser){
     this.currentUser = user;
+    console.log(this.currentUser);
   }
 
   public isAuthenticated(): boolean {
