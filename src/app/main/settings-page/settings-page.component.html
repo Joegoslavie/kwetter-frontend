@@ -14,6 +14,11 @@
         </div>
       </div>
 
+
+      <div *ngIf="SuccessMessage" class="alert alert-success">
+        {{ SuccessMessage }}
+      </div>
+
       <div class="row mb-3">
           <div class="col-12">
               <div class="card">
@@ -24,19 +29,19 @@
                             <div class="form-group">
                                 <label class="mb-0" for="username"><b>Display name</b></label><br>
                                 <small>Will be displayed next to your Kwetter username.</small>
-                                <input name="username" type="text" value="" class="form-control form-control-sm">
+                                <input [(ngModel)]="DisplayName" type="text" value="" class="form-control form-control-sm">
                             </div>
 
                             <div class="form-group">
                                 <label class="mb-0" for="username"><b>Website URL</b></label><br>
                                 <small>Provide your website URL, if you like.</small>
-                                <input name="username" type="text" value="" class="form-control form-control-sm">
+                                <input [(ngModel)]="WebsiteUrl" type="text" value="" class="form-control form-control-sm">
                             </div>
 
                             <div class="form-group">
                                 <label class="mb-0" for="username"><b>Location</b></label><br>
                                 <small>Will show on your profile page.</small>
-                                <input name="username" type="text" value="" class="form-control form-control-sm">
+                                <input [(ngModel)]="Location" type="text" value="" class="form-control form-control-sm">
                             </div>
                           </div>
 
@@ -44,12 +49,12 @@
                             <div class="form-group">
                                 <label class="mb-0" for="username"><b>Profile description</b></label><br>
                                 <small>Description about you and what you do, or whatever.</small>
-                                <textarea style="height: 90%;" rows="9" name="username" type="text" value="" class="form-control form-control-sm"></textarea>
+                                <textarea [(ngModel)]="Description" style="height: 90%;" rows="9" name="username" type="text" value="" class="form-control form-control-sm"></textarea>
                             </div>
                           </div>
 
                           <div class="offset-9 col-3">
-                            <button class="btn btn-dark btn-sm btn-block">Save changes</button>
+                            <button (click)='updateProfile()' class="btn btn-dark btn-sm btn-block">Save changes</button>
                           </div>
                       </div>
                   </div>

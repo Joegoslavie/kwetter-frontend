@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { KwetterUser } from '../classes/models/kwetter-user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,15 @@ export class AuthService {
   private registerUri = environment.endpoint + "/authentication/register";
   private loginUri = environment.endpoint + "/authentication/login";
 
-  private currentUser : any;
+  public currentUser : KwetterUser;
   private jwtHelper = new JwtHelperService();
 
   constructor(private httpClient : HttpClient) { 
 
+  }
+
+  public setUser(user : KwetterUser){
+    this.currentUser = user;
   }
 
   public isAuthenticated(): boolean {

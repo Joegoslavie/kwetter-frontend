@@ -1,7 +1,7 @@
 <div class="form-group">
     <label for="username" class="mb-0 text-secondary"><i>Tell the world, whats on your mind?</i></label><br>
-    <textarea class="form-control" cols="1"></textarea>
+    <input [(ngModel)]="content" class="form-control form-control">
     <div>    
-        <button class="mt-1 mb-2 float-right btn btn-sm btn-dark">Post tweet</button>
+        <button (click)='placeTweet()'  [disabled]="!content" class="mt-1 mb-2 float-right btn btn-sm btn-dark">Post tweet</button>
     </div>
 </div>
