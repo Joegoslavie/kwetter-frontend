@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { KwetterUser } from '../classes/models/kwetter-user';
 import { AuthenticationResult } from '../classes/response/authentication-result';
 import { AuthService } from '../services/auth.service';
 
@@ -18,7 +20,7 @@ export class RegisterComponent implements OnInit {
   public emailError : string;
   public usernameError : string;
   
-  constructor(private service : AuthService) { 
+  constructor(private service : AuthService, private router : Router) { 
     
   }
 
@@ -31,7 +33,11 @@ export class RegisterComponent implements OnInit {
     this.service.doRegister(this.username, this.email, this.password, this.passwordRepeat).subscribe(result => {
 
       let resultData : AuthenticationResult = JSON.parse(JSON.stringify(result.body));
-      console.log(resultData);
+      let account : KwetterUser = resultData.account;
+      this.service.setUser(account);
+      
+      this.service.setToken(account.token);
+      this.router.navigate(['timeline']);
 
     }, failure => {
       let errorData : AuthenticationResult = JSON.parse(JSON.stringify(failure.error));

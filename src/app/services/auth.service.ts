@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { KwetterUser } from '../classes/models/kwetter-user';
+import { KwetterProfile } from '../classes/models/kwetter-profile';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,19 @@ export class AuthService {
   private registerUri = environment.endpoint + "/authentication/register";
   private loginUri = environment.endpoint + "/authentication/login";
 
-  public currentUser : KwetterUser;
   private jwtHelper = new JwtHelperService();
 
   constructor(private httpClient : HttpClient) { 
 
   }
 
+  public getUser() : KwetterUser {
+    let account = JSON.parse(localStorage.getItem('user'));
+    return account;
+  }
+
   public setUser(user : KwetterUser){
-    this.currentUser = user;
-    console.log(this.currentUser);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   public isAuthenticated(): boolean {
@@ -39,6 +43,7 @@ export class AuthService {
 
   public logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
   public doRegister(username : string, email : string, password : string, passwordRpt : string) {

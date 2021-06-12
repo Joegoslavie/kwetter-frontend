@@ -9,7 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class KwetterLayoutComponent implements OnInit {
 
-  constructor(private auth : AuthService, private router : Router) { }
+  public username : string;
+
+  constructor(private auth : AuthService, private router : Router) { 
+    this.username = auth.getUser().username;
+  }
 
   ngOnInit(): void {
   }

@@ -1,17 +1,22 @@
-<div class="row">
+
+<div *ngIf="!profile">   
+    <p>Loading profile....</p>
+</div>
+
+<div *ngIf="profile" class="row">
     <div class="col-3">
         <div class="row">
             <div class="col-12">
                 <img width="250" height="250" class="rounded shadow shadow-lg border border-secondary" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
             </div>
             <div class="col-12 mt-1">
-                <h4 class="mb-0">Hugo V.</h4>
-                <a href="">@Joegoslavie</a>
+                <h4 class="mb-0">{{ profile.displayName }}</h4>
+                <a href="">@{{ profile.username }}</a>
                 <hr>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate tempore laborum itaque iure, vel, quidem autem beatae quo eaque reprehenderit rem hic.</p>             
+                <p>{{ profile.description }}</p>             
                 <hr>
-                <i class="fa fa-link text-gray"></i><a href=""> https://github.com/Joegoslavie</a><br>
-                <i class="fa fa-compass"></i> <small> Netherlands</small> <br>
+                <i *ngIf="profile.websiteUrl" class="fa fa-link text-gray"></i><a href=""> {{ profile.websiteUrl }}</a><br>
+                <i *ngIf="profile.location" class="fa fa-compass"></i> <small> {{ profile.location }}</small> <br>
                 <i class="fa fa-history text-gray"></i> <small> Joined Feb 2021.</small>
             </div>
         </div>
@@ -21,20 +26,21 @@
         <div class="row mb-2">
             <div class="col-12">
                 <div class="float-left">
-                    <h5 class="text-dark">Profile of <a href="#">@Joegoslavie</a></h5>
-                    <small>Last activity at: 10/10/2021</small>
+                    <h5 class="text-dark">Profile of <a href="#">@{{ profile.username }}</a></h5>
+                    <small>Last activity at:  10/10/2021</small>
                 </div>
 
-                <div class="float-right">
+
+                <div *ngIf="!myProfile" class="float-right">
                     <div class="form-group mb-1">
-                        <button class="btn btn-block btn-success btn-sm">Follow Joegoslavie</button>
+                        <button (click)="follow(profile)" [disabled]="followClicked" class="btn btn-block btn-success btn-sm">Follow {{ profile.username }}</button>
                     </div>
 
                     <div class="form-group">
-                        <button class="btn btn-block btn-danger btn-sm">Block Joegoslavie</button>
+                        <button (click)="block(profile)" [disabled]="blockClicked" class="btn btn-block btn-danger btn-sm">Block {{ profile.username }}</button>
                     </div>
-
                 </div>
+
             </div>
         </div>
 
@@ -42,107 +48,83 @@
 
         <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link {{ isActive('tweets') }}" [routerLink]="['./']">Tweets (10)</a>
+              <a class="nav-link" [routerLink]="" (click)="showTweets()" [ngClass]="{'active': tweetsTab}" >Tweets ({{ profile.tweets.length }})</a>
             </li>
             <li class="nav-item">
-              <a class="text-dark nav-link {{ isActive('following') }}" href="{{ followingUrl }}">Following (144)</a>
+              <a class="text-dark nav-link" [routerLink]="" (click)="showFollowing()" [ngClass]="{'active': followingTab}">Following ({{ profile.following.length }})</a>
             </li>
             <li class="nav-item">
-              <a class="text-dark nav-link {{ isActive('followers') }}" href="{{ followersUrl }}">Followers (94)</a>
+              <a class="text-dark nav-link" [routerLink]="" (click)="showFollowers()" [ngClass]="{'active': followerTab}">Followers ({{ profile.followers.length }})</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link disabled" href="#">Pinned</a>
-            </li> -->
           </ul>
 
-          <div class="row">
+          <div *ngIf="tweetsTab" class="row">
               <div class="col-12">
                   <div class="card border-top-0">
                       <div class="card-body">
 
-                        <div>
+                        <div *ngFor="let tweet of profile.tweets">
                             <div class="row">
                                 <div class="col-12">
-                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
+                                    <small><a href="">{{ tweet.displayName }}. (@{{ tweet.username }})</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
+                                    <p class="mb-4">{{ tweet.content }}</p>  
                                     <div class="float-left">
-                                        <small><i>10/10/2020 12:30</i></small>
+                                        <small><i>{{ tweet.createdAt | date:'short' }}</i></small>
                                       </div>
                                       <div class="float-right">
-                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
-                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
+                                        <!-- <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small> -->
+                                        <!-- <small class="mr-3"><a class="text-secondary" href="">Reply</a></small> -->
                     
-                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
-                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
+                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 0</a></small>
+                                        <small><a (click)="likeTweet(tweet)" class="text-danger"><i class="fa fa-heart text-gray"></i> {{ tweet.liked }}</a></small>
                                       </div>
                                 </div>
                             </div>
                             <hr>
                         </div>
-
-                        <div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
-                                    <div class="float-left">
-                                        <small><i>10/10/2020 12:30</i></small>
-                                      </div>
-                                      <div class="float-right">
-                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
-                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
-                    
-                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
-                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
-                                      </div>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                        <div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
-                                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
-                                    <div class="float-left">
-                                        <small><i>10/10/2020 12:30</i></small>
-                                      </div>
-                                      <div class="float-right">
-                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
-                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
-                    
-                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
-                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
-                                      </div>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-
-                        <div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
-                                    <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia est eum quod expedita tenetur perferendis vel ullam velit rem quasi. Impedit illum, officia reprehenderit voluptas tenetur quo! Iusto, ullam maxime!</p>  
-                                    <div class="float-left">
-                                        <small><i>10/10/2020 12:30</i></small>
-                                      </div>
-                                      <div class="float-right">
-                                        <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
-                                        <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
-                    
-                                        <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
-                                        <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
-                                      </div>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-
-
                       </div>
                   </div>
               </div>
           </div>
+
+          <div *ngIf="followingTab" class="row">
+            <div class="col-12">
+                <div class="card border-top-0">
+                    <div class="card-body">
+
+                      <div *ngFor="let profile of profile.following">
+                        <div class="row">
+                            <div class="col-2">
+                                  <a routerLink="/profile/{{ profile.username }}"><img src="https://www.w3schools.com/howto/img_avatar.png" width="100" height="100" alt=""></a>
+                            </div>
+                            <div class="col-10">
+                                <a href="" class="float-right btn btn-dark btn-sm">Unfollow</a>
+                                <a routerLink="/profile/{{ profile.username }}">{{ profile.displayName }} (@{{ profile.username }})</a><br>
+                                <small>
+                                    Based in {{ profile.location }} <br>
+                                </small>
+                            </div>
+                        </div>
+                          <hr>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="followerTab" class="row">
+            <div class="col-12">
+                <div class="card border-top-0">
+                    <div class="card-body">
+
+                      <div *ngFor="let tweet of profile.tweets">
+                          <div class="row">
+                          </div>
+                          <hr>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

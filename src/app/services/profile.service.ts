@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 export class ProfileService {
 
   private updateUri = environment.endpoint + "/profile/update";
+  private profileUri = environment.endpoint + "/profile?username="
 
   constructor(private httpClient : HttpClient) { }
 
@@ -21,5 +22,9 @@ export class ProfileService {
     };
     
     return this.httpClient.post(this.updateUri, body, { observe: 'response' });
+  }
+
+  public getProfile(username : string){
+    return this.httpClient.get(this.profileUri + username, { observe: 'response' });
   }
 }

@@ -8,5 +8,4 @@ export class KwetterUser {
     public email : string;
     public token : string;
     public profile : KwetterProfile;
-    public tweets : Tweet[];
 }

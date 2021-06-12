@@ -9,15 +9,19 @@ import { TweetServiceService } from 'src/app/services/tweet-service.service';
 export class PlaceTweetFormComponent implements OnInit {
 
   public content : string;
+  public newTweet : boolean = false;
 
   constructor(private tweetService : TweetServiceService) { }
 
   ngOnInit(): void {
+    this.newTweet = false;
   }
 
   public placeTweet(){
     this.tweetService.placeTweet(this.content).subscribe(res => {
-      console.log(res);
+      console.log(res.body);
+      this.newTweet = true;
+      this.content = "";
     })
   }
 
