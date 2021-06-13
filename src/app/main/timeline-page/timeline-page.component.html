@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-12">
 
-          <div class="card mt-2">
+          <div *ngFor="let tweet of timeline" class="card mt-2">
             <div class="card-body">
               <div class="row">
                 <div class="col-1">
@@ -28,76 +28,23 @@
                 </div>
                 <div class="col-11">
                   <div>
-                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
-                    <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
+                    <small><a routerLink="/profile/{{ tweet.username }}">{{ tweet.displayName }} (@{{ tweet.username }})</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
+                    <p class="mb-1">{{ tweet.content }}</p>  
                   </div>
                   <div class="float-left">
-                    <small><i>10/10/2020 12:30</i></small>
+                    <small><i>{{ tweet.createdAt | date:'short' }}</i></small>
                   </div>
                   <div class="float-right">
-                    <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
-                    <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
+                    <small class="mr-3"><a class="text-secondary" [routerLink]="">Retweet</a></small>
+                    <small class="mr-3"><a class="text-secondary" [routerLink]="">Reply</a></small>
 
-                    <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
-                    <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
+                    <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 0</a></small>
+                    <small><a class="text-danger" [routerLink]="" (click)="likeTweet(tweet)" ><i class="fa fa-heart text-gray"></i> {{ tweet.liked }}</a></small>
                   </div>
                 </div>
               </div>
             </div>
           </div> 
-
-          <div class="card mt-2">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-1">
-                  <img class="shadow-lg" src="https://www.w3schools.com/howto/img_avatar.png" height="50" width="50">
-                </div>
-                <div class="col-11">
-                  <div>
-                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
-                    <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
-                  </div>
-                  <div class="float-left">
-                    <small><i>10/10/2020 12:30</i></small>
-                  </div>
-                  <div class="float-right">
-                    <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
-                    <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
-
-                    <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
-                    <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> 
-
-          <div class="card mt-2">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-1">
-                  <img class="shadow-lg" src="https://www.w3schools.com/howto/img_avatar.png" height="50" width="50">
-                </div>
-                <div class="col-11">
-                  <div>
-                    <small><a href="">Hugo V. (@Joegoslavie)</a></small> <small class="float-right"><a class="text-secondary" href="#"><i>Report</i></a></small> <br> 
-                    <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod sed dolorum ex delectus itaque. Doloribus, ratione?</p>  
-                  </div>
-                  <div class="float-left">
-                    <small><i>10/10/2020 12:30</i></small>
-                  </div>
-                  <div class="float-right">
-                    <small class="mr-3"><a class="text-secondary" href="">Retweet</a></small>
-                    <small class="mr-3"><a class="text-secondary" href="">Reply</a></small>
-
-                    <small class="mr-3"><a class="" href=""><i class="fa fa-comment text-gray"></i> 10</a></small>
-                    <small><a class="text-danger" href=""><i class="fa fa-heart text-gray"></i> 12</a></small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> 
-
         </div>       
       </div>
     </div>

@@ -15,6 +15,10 @@ export class TweetServiceService {
 
   }
 
+  public getTimeline(amount : number, page : number){
+    
+  }
+
   public toggleLike(tweet : Tweet){
     const body = { TweetId: tweet.id};
     return this.httpClient.post(this.likeUri, body, { observe: 'response' });

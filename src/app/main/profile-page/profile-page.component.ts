@@ -24,13 +24,19 @@ export class ProfilePageComponent implements OnInit {
   public followingTab = false;
   public followerTab = false;
 
+  public notFound = false;
+
   constructor(private profileService : ProfileService, private auth : AuthService, private activatedRoute: ActivatedRoute, private router: Router, private serializer: UrlSerializer, private tweetService : TweetServiceService) { 
     
     const usr = this.activatedRoute.snapshot.paramMap.get('username');
+    console.log(usr);
+
     if(usr != this.auth.getUser().username){
       this.myProfile = false;
       this.profileService.getProfile(usr).subscribe(resp => {
         this.profile = JSON.parse(JSON.stringify(resp.body));
+      }, err => {
+        this.notFound = true;
       })
     }
     else{
@@ -38,11 +44,16 @@ export class ProfilePageComponent implements OnInit {
       this.profile = this.auth.getUser().profile;
     }
 
-    // console.log(this.myProfile);
-    console.log(this.profile.tweets);
+    this.activatedRoute.params.subscribe(params => {
+      let bla = params['username'];
+      console.log(bla);
+    });
+
   }
 
   ngOnInit(): void {
+    const usr = this.activatedRoute.snapshot.paramMap.get('username');
+    console.log(usr);
   }
 
   public showFollowers(){

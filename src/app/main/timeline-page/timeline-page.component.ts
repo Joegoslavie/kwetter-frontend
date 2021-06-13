@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { KwetterUser } from 'src/app/classes/models/kwetter-user';
+import { Tweet } from 'src/app/classes/models/tweet';
 import { AuthService } from 'src/app/services/auth.service';
+import { TweetServiceService } from 'src/app/services/tweet-service.service';
 
 @Component({
   selector: 'app-timeline-page',
@@ -10,12 +12,29 @@ import { AuthService } from 'src/app/services/auth.service';
 export class TimelinePageComponent implements OnInit {
 
   public currentUser : KwetterUser;
+  public timeline : Tweet[];
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService, private tweetService : TweetServiceService) { }
 
   ngOnInit(): void {
     this.currentUser = this.authService.getUser();
-    console.log(this.currentUser);
+    this.timeline = this.currentUser.timeline;
   }
 
+  public likeTweet(tweet : Tweet){
+
+    this.tweetService.toggleLike(tweet).subscribe(res => {
+      let result = JSON.parse(JSON.stringify(res.body));
+      console.log(result);
+
+      if(result === true){
+        tweet.liked = tweet.liked + 1;
+      }
+      else{
+        tweet.liked = tweet.liked - 1;
+      }
+
+      console.log(tweet.liked);
+    });
+  }
 }

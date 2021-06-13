@@ -30,6 +30,8 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     const token = this.getToken();
+    return token != '';
+
     return !this.jwtHelper.isTokenExpired(token);
   }
 
