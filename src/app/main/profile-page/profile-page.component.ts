@@ -24,31 +24,27 @@ export class ProfilePageComponent implements OnInit {
   public followingTab = false;
   public followerTab = false;
 
-  public notFound = false;
-
-  constructor(private profileService : ProfileService, private auth : AuthService, private activatedRoute: ActivatedRoute, private router: Router, private serializer: UrlSerializer, private tweetService : TweetServiceService) { 
-    
-    const usr = this.activatedRoute.snapshot.paramMap.get('username');
-    console.log(usr);
-
-    if(usr != this.auth.getUser().username){
-      this.myProfile = false;
-      this.profileService.getProfile(usr).subscribe(resp => {
-        this.profile = JSON.parse(JSON.stringify(resp.body));
-      }, err => {
-        this.notFound = true;
-      })
-    }
-    else{
-      this.myProfile = true;
-      this.profile = this.auth.getUser().profile;
-    }
+  constructor(private profileService : ProfileService, private auth : AuthService, private activatedRoute: ActivatedRoute, private router: Router, private serializer: UrlSerializer, private tweetService : TweetServiceService) {
 
     this.activatedRoute.params.subscribe(params => {
-      let bla = params['username'];
-      console.log(bla);
+      let userName = params['username'];
+      this.setProfile(userName);
     });
+  }
 
+  setProfile(username : string){
+
+    if(this.auth.getUser().username == username) {
+      this.profile = this.auth.getUser().profile;
+      this.myProfile = true;
+      return;
+    }
+
+    this.profileService.getProfile(username).subscribe(resp => {
+      this.profile = JSON.parse(JSON.stringify(resp.body));
+      this.myProfile = false;
+    }, err => {
+    })
   }
 
   ngOnInit(): void {
@@ -84,7 +80,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   public likeTweet(tweet : Tweet){
-    
+
     this.likeClicked = true;
 
     this.tweetService.toggleLike(tweet).subscribe(res => {
