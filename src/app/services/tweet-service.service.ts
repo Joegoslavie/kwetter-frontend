@@ -10,13 +10,14 @@ export class TweetServiceService {
 
   private postTweetUri = environment.endpoint + "/tweet/new";
   private likeUri = environment.endpoint + "/tweet/like"
+  private timelineUri = environment.endpoint + "/tweet/timeline"
 
-  constructor(private httpClient : HttpClient) { 
+  constructor(private httpClient : HttpClient) {
 
   }
 
-  public getTimeline(amount : number, page : number){
-    
+  public getTimeline(page : number, number : number){
+    return this.httpClient.get(this.timelineUri + "?page=" + page + "&amount=" + number, { observe: 'response' });
   }
 
   public toggleLike(tweet : Tweet){
