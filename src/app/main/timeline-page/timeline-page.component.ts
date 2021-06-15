@@ -14,11 +14,21 @@ export class TimelinePageComponent implements OnInit {
   public currentUser : KwetterUser;
   public timeline : Tweet[];
 
+  public tweetContents : string;
+
   constructor(private authService : AuthService, private tweetService : TweetServiceService) { }
 
   ngOnInit(): void {
     this.currentUser = this.authService.getUser();
     this.timeline = this.currentUser.timeline;
+  }
+
+  public placeTweet(){
+    this.tweetService.placeTweet(this.tweetContents).subscribe(res => {
+      let tweet : Tweet = JSON.parse(JSON.stringify(res.body));
+      this.timeline.push(tweet);
+      this.tweetContents = '';
+    })
   }
 
   public likeTweet(tweet : Tweet){
