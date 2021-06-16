@@ -88,7 +88,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   public likeTweet(tweet : Tweet){
-    
+
     this.likeClicked = true;
     this.tweetService.toggleLike(tweet).subscribe(res => {
       let result = JSON.parse(JSON.stringify(res.body));
