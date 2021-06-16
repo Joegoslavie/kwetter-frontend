@@ -7,24 +7,11 @@ import { environment } from 'src/environments/environment';
 })
 export class MentionService {
 
-  private updateUri = environment.endpoint + "/profile/update";
-  private profileUri = environment.endpoint + "/profile?username="
+  private mentionUri = environment.endpoint + "/mention";
 
   constructor(private httpClient : HttpClient) { }
 
-  public updateProfile(displayName : string, description : string, location : string, websiteUrl : string){
-    const body =
-    {
-      DisplayName: displayName,
-      Description: description,
-      Location : location,
-      WebsiteUrl : websiteUrl
-    };
-
-    return this.httpClient.post(this.updateUri, body, { observe: 'response' });
-  }
-
-  public getProfile(username : string){
-    return this.httpClient.get(this.profileUri + username, { observe: 'response' });
+  public getMentionsByUsername(username, page, number){
+    return this.httpClient.get(this.mentionUri + "?username=" + username + "&page=" + page + "&amount=" + number, { observe: 'response' });
   }
 }

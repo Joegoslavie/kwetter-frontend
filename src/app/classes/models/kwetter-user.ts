@@ -8,5 +8,5 @@ export class KwetterUser {
     public email : string;
     public token : string;
     public profile : KwetterProfile;
-    public timeline : Tweet[];
+    // public timeline : Tweet[];
 }

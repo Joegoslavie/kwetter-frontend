@@ -13,8 +13,13 @@ import { TweetServiceService } from 'src/app/services/tweet-service.service';
 })
 export class ProfilePageComponent implements OnInit {
 
+  public myPage : boolean;
+  public username : string;
+
   public profile : KwetterProfile;
-  public myProfile : boolean = true;
+  public following : KwetterProfile[] = [];
+  public followers : KwetterProfile[] = [];
+  public tweets : Tweet[];
 
   public likeClicked = false;
   public followClicked = false;
@@ -24,36 +29,32 @@ export class ProfilePageComponent implements OnInit {
   public followingTab = false;
   public followerTab = false;
 
-  public notFound = false;
-
   constructor(private profileService : ProfileService, private auth : AuthService, private activatedRoute: ActivatedRoute, private router: Router, private serializer: UrlSerializer, private tweetService : TweetServiceService) { 
-    
-    const usr = this.activatedRoute.snapshot.paramMap.get('username');
-    console.log(usr);
-
-    if(usr != this.auth.getUser().username){
-      this.myProfile = false;
-      this.profileService.getProfile(usr).subscribe(resp => {
-        this.profile = JSON.parse(JSON.stringify(resp.body));
-      }, err => {
-        this.notFound = true;
-      })
-    }
-    else{
-      this.myProfile = true;
-      this.profile = this.auth.getUser().profile;
-    }
-
     this.activatedRoute.params.subscribe(params => {
-      let bla = params['username'];
-      console.log(bla);
+      this.username = params['username'];
+      this.ngOnInit();
     });
-
   }
 
   ngOnInit(): void {
-    const usr = this.activatedRoute.snapshot.paramMap.get('username');
-    console.log(usr);
+    console.log('retrieving profile of ' + this.username);
+    this.myPage = this.username == this.auth.getUser().username;
+    
+    this.profileService.getProfile(this.username).subscribe(res => {
+      this.profile = JSON.parse(JSON.stringify(res.body));
+    });
+
+    this.tweetService.getTweetsByUsername(this.username, 0, 25).subscribe(res => {
+      this.tweets = JSON.parse(JSON.stringify(res.body));
+    });
+
+    this.profileService.getFollowers(this.username, 0, 25).subscribe(res => {
+      this.followers = JSON.parse(JSON.stringify(res.body));
+    });
+ 
+    this.profileService.getFollowing(this.username, 0, 25).subscribe(res => {
+      this.following = JSON.parse(JSON.stringify(res.body));
+    });
   }
 
   public showFollowers(){
@@ -64,8 +65,6 @@ export class ProfilePageComponent implements OnInit {
   public showFollowing(){
     this.tweetsTab = this.followerTab = false;
     this.followingTab = true;
-
-    console.log(this.profile.following);
   }
 
   public showTweets(){
@@ -75,7 +74,12 @@ export class ProfilePageComponent implements OnInit {
 
   public follow(profile : KwetterProfile){
     this.followClicked = true;
-    console.log(profile);
+    this.profileService.toggleFollow(this.username).subscribe(res => {
+      let status = JSON.parse(JSON.stringify(res.body));
+      console.log(status);
+      this.ngOnInit();
+      this.followClicked = false;
+    });
   }
 
   public block(profile : KwetterProfile) {
@@ -86,18 +90,14 @@ export class ProfilePageComponent implements OnInit {
   public likeTweet(tweet : Tweet){
     
     this.likeClicked = true;
-
     this.tweetService.toggleLike(tweet).subscribe(res => {
       let result = JSON.parse(JSON.stringify(res.body));
-      console.log(result);
-
       if(result === true){
         tweet.liked += 1;
       }
       else{
         tweet.liked -+ 1;
       }
-
       this.likeClicked = false;
     });
   }

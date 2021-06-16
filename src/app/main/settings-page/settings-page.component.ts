@@ -27,11 +27,9 @@ export class SettingsPageComponent implements OnInit {
     this.profileService.updateProfile(this.DisplayName, this.Description, this.Location, this.WebsiteUrl).subscribe(res => {
       this.SuccessMessage = "Profile updated";
       let resultProfile : KwetterProfile = JSON.parse(JSON.stringify(res.body));
-
       let account = this.authService.getUser();
       account.profile = resultProfile;
-      this.authService.setUser(account);
-      
+      this.authService.setUser(account); 
       this.refresh();
     });
   }

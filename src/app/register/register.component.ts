@@ -34,9 +34,10 @@ export class RegisterComponent implements OnInit {
 
       let resultData : AuthenticationResult = JSON.parse(JSON.stringify(result.body));
       let account : KwetterUser = resultData.account;
+
       this.service.setUser(account);
-      
       this.service.setToken(account.token);
+      
       this.router.navigate(['timeline']);
 
     }, failure => {

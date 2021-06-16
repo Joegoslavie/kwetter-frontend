@@ -8,9 +8,8 @@ import { Tweet } from '../classes/models/tweet';
 })
 export class TweetServiceService {
 
-  private postTweetUri = environment.endpoint + "/tweet/new";
-  private likeUri = environment.endpoint + "/tweet/like"
-  private timelineUri = environment.endpoint + "/tweet/timeline"
+  private tweetUri = environment.endpoint + "/tweet";
+  private timelineUri = environment.endpoint + "/timeline";
 
   constructor(private httpClient : HttpClient) {
 
@@ -20,13 +19,17 @@ export class TweetServiceService {
     return this.httpClient.get(this.timelineUri + "?page=" + page + "&amount=" + number, { observe: 'response' });
   }
 
+  public getTweetsByUsername(username, page, number){
+    return this.httpClient.get(this.tweetUri + "?username=" + username + "&page=" + page + "&amount=" + number, { observe: 'response' });
+  }
+
   public toggleLike(tweet : Tweet){
     const body = { TweetId: tweet.id};
-    return this.httpClient.post(this.likeUri, body, { observe: 'response' });
+    return this.httpClient.post(this.tweetUri + '/like', body, { observe: 'response' });
   }
 
   public placeTweet(content : string) {
     const body = { content: content};
-    return this.httpClient.post(this.postTweetUri, body, { observe: 'response' });
+    return this.httpClient.post(this.tweetUri + '/new', body, { observe: 'response' });
   }
 }

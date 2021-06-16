@@ -18,7 +18,10 @@ export class TimelinePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.authService.getUser();
-    this.timeline = this.currentUser.timeline;
+    this.tweetService.getTimeline(1, 20).subscribe(res => {
+      this.timeline = JSON.parse(JSON.stringify(res.body));
+      console.log(this.timeline);
+    });
   }
 
   public likeTweet(tweet : Tweet){
