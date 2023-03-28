@@ -1,6 +1,7 @@
-# KwetterFrontend
+# kwetter-frontend
+Fontys assignment to create a system similar to Twitter.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+[Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
 ## Development server
 
